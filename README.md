@@ -3,3 +3,6 @@
 
 ## Fonts
 [Fira Code](https://github.com/tonsky/FiraCode/wiki)
+
+## Theme
+[Spaceship](https://github.com/denysdovhan/spaceship-prompt)
