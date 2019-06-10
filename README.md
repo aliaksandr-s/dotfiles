@@ -2,15 +2,17 @@
 
 ## Extras
 
-[Fira Code Font](https://github.com/tonsky/FiraCode/wiki)
+[Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
 
-[Spaceship terminal theme](https://github.com/denysdovhan/spaceship-prompt)
+[Spaceship - terminal theme](https://github.com/denysdovhan/spaceship-prompt)
 
-[Vifm File manager](https://vifm.info/)
+[Vifm - vi file manager](https://vifm.info/)
 
-[Brew](https://brew.sh/)
+[Brew - package manager](https://brew.sh/)
 
-[The Fuck](https://github.com/nvbn/thefuck)
+[The Fuck - terminal autocorrect](https://github.com/nvbn/thefuck)
+
+[Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
 
 ## Instructions
 
