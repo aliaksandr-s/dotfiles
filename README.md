@@ -1,10 +1,16 @@
 # Dotfiles
 
-## Extra
+## Extras
 
 [Fira Code Font](https://github.com/tonsky/FiraCode/wiki)
 
 [Spaceship terminal theme](https://github.com/denysdovhan/spaceship-prompt)
+
+[Vifm File manager](https://vifm.info/)
+
+[Brew](https://brew.sh/)
+
+[The Fuck](https://github.com/nvbn/thefuck)
 
 ## Instructions
 
