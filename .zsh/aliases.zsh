@@ -5,7 +5,8 @@ alias zshconfig="code ~/.zshrc"
 alias zshload="source ~/.zshrc"
 alias aliasedit="nvim ~/.zsh/aliases.zsh"
 
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+# dotfiles git alias
+alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
 alias d="cd ~/Desktop" 
 
