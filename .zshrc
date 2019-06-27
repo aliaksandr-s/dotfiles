@@ -1,14 +1,40 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Paths
+## Paths ##
+# ZSH #
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CONFIG="$HOME/.zsh"
+# Brew #
+export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
-# Theme
+
+## Themes ##
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="spaceship"
 
+
+## Plugins ##
+plugins=(
+  zsh-nvm
+  git
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+)
+
+
+## Sources ##
+source $ZSH/oh-my-zsh.sh
+source $ZSH_CONFIG/aliases.zsh
+source $ZSH_CONFIG/funcs.zsh
+
+## Config ##
+eval $(thefuck --alias)
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
+
+
+## Defaults ##
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -28,8 +54,6 @@ ZSH_THEME="spaceship"
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -50,20 +74,8 @@ ENABLE_CORRECTION="true"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Plugins
-plugins=(
-  zsh-nvm
-  git
-  zsh-autosuggestions
-  zsh-syntax-highlighting
-)
 
-# Sources
-source $ZSH/oh-my-zsh.sh
-source $ZSH_CONFIG/aliases.zsh
-
-# User configuration
-
+## User configuration ##
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -86,3 +98,4 @@ source $ZSH_CONFIG/aliases.zsh
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
+
