@@ -1,9 +1,9 @@
 # Example aliases
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias zshconfig="code ~/.zshrc"
+alias zshedit="code ~/.zshrc"
 alias zshload="source ~/.zshrc"
-alias aliasedit="nvim ~/.zsh/aliases.zsh"
+alias aliasedit="code ~/.zsh/aliases.zsh"
 
 # dotfiles git alias
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
@@ -27,3 +27,5 @@ alias psql="docker exec -it pg-docker psql -U postgres"
 
 alias redis="docker run --rm --name redis-docker -p 6379:6379 -v $HOME/docker/volumes/redis:/data redis redis-server --appendonly yes"
 alias redis-cli="docker exec -it redis-docker redis-cli"
+
+alias datomic="docker run -e ADMIN_PASSWORD="admin" -e DATOMIC_PASSWORD="datomic" -p 4334-4336:4334-4336 --name datomic-free akiel/datomic-free"
