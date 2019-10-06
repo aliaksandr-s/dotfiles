@@ -5,7 +5,7 @@
 
 [Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
 
-[Spaceship - terminal theme](https://github.com/denysdovhan/spaceship-prompt)
+[Spaceship - terminal extension](https://github.com/denysdovhan/spaceship-prompt)
 
 [Vifm - vi file manager](https://vifm.info/)
 
@@ -16,6 +16,8 @@
 [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
 
 [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
+
+[Gogh - Themes for terminal](http://mayccoll.github.io/Gogh/)
 
 ## Instructions
 
