@@ -5,6 +5,8 @@
 
 [Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
 
+[Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
+
 [Spaceship - terminal extension](https://github.com/denysdovhan/spaceship-prompt)
 
 [Vifm - vi file manager](https://vifm.info/)
