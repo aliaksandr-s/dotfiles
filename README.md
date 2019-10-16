@@ -21,6 +21,8 @@
 
 [Gogh - Themes for terminal](http://mayccoll.github.io/Gogh/)
 
+[Tmux](https://github.com/tmux/tmux)
+
 ## Instructions
 
 `cfg` - alias to work with repo
