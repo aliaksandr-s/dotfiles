@@ -22,6 +22,14 @@ Plug 'ryanoasis/vim-devicons'
 
 " Easy surroundigs
 Plug 'tpope/vim-surround'
+
+" Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
+" Autocmpletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" :CocInstall coc-tsserver coc-json
+
 call plug#end()
 
 
