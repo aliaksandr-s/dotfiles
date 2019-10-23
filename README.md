@@ -23,6 +23,8 @@
 
 [Tmux](https://github.com/tmux/tmux)
 
+[Fuzz finder](https://github.com/junegunn/fzf)
+
 ## Instructions
 
 `cfg` - alias to work with repo

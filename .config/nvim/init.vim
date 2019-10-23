@@ -30,20 +30,43 @@ Plug 'sheerun/vim-polyglot'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-tsserver coc-json
 
-call plug#end()
+" Multiple cursor
+" Plug 'terryma/vim-multiple-cursors'
 
+call plug#end()
+" --------------- "
 
 " -- Custom key mappings --
 map <C-n> :NERDTreeToggle<CR>
+
+" Replace highlighting
+nnoremap <C-s> :%s///g<left><left>
+
+" Clear highlighting
+" nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+nnoremap <esc><esc> :noh<return>
+
+" In insert or command mode, move normally by using Ctrl
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+cnoremap <C-h> <Left>
+cnoremap <C-j> <Down>
+cnoremap <C-k> <Up>
+cnoremap <C-l> <Right>
+
+" --------------- "
+
+
 
 " -- Other Settings --
 colorscheme gruvbox
 
 " set tab width to 4
 filetype plugin indent on
-set tabstop=4
-set shiftwidth=4
-set expandtab
+set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 set nu "Show line number
 set mouse=n "Set mouse mode
@@ -60,3 +83,4 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:Powerline_symbols='unicode' "Support unicode
 
 " let g:NERDTreeWinPos = "right" "Open window on the right side 
+" --------------- "
