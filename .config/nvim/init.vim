@@ -71,6 +71,10 @@ set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 set nu "Show line number
 set mouse=n "Set mouse mode
 
+set autochdir "Auto current directory
+
+set backupcopy=yes "Fix Parcel hot realoading
+
 let g:gruvbox_italic=1 "Enable italic
 
 let g:airline_powerline_fonts = 1 "Powerline fonts
