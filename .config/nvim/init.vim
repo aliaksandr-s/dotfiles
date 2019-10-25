@@ -57,6 +57,8 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
 
+" Stop terminal mode
+tnoremap <Esc> <C-\><C-n>
 " --------------- "
 
 
