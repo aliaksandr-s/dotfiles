@@ -26,12 +26,22 @@ Plug 'tpope/vim-surround'
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 
+" Notes taking
+Plug 'vimwiki/vimwiki'
+
 " Autocmpletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " :CocInstall coc-tsserver coc-json
 
 " Multiple cursor
 " Plug 'terryma/vim-multiple-cursors'
+
+" Pairs of mappings
+Plug 'https://github.com/tpope/vim-unimpaired'
+
+" Fuzzy findings
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 " --------------- "

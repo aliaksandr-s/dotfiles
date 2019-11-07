@@ -1,5 +1,5 @@
 " run executables
 set runexec
 
-" open files with vscode
-filetype * code
+" open files with vim
+filetype * vim

@@ -5,9 +5,12 @@
 # ZSH #
 export ZSH="$HOME/.oh-my-zsh"
 export ZSH_CONFIG="$HOME/.zsh"
+
 # Brew #
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
+# term colors in tmux
+export TERM=xterm-256color
 
 ## Themes ##
 # ZSH_THEME="robbyrussell"
@@ -33,6 +36,7 @@ eval $(thefuck --alias)
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 
 ## Defaults ##
 # Uncomment the following line to use case-sensitive completion.
