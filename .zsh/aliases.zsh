@@ -5,6 +5,9 @@ alias zshedit="vim ~/.zshrc"
 alias zshload="source ~/.zshrc"
 alias aliasedit="vim ~/.zsh/aliases.zsh"
 
+# dualshock gamepad
+alias gamepad="sudo ds4drv" 
+
 # dotfiles git alias
 alias cfg='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
 
