@@ -4,6 +4,7 @@
 alias zshedit="vim ~/.zshrc"
 alias zshload="source ~/.zshrc"
 alias aliasedit="vim ~/.zsh/aliases.zsh"
+alias vim="nvim"
 
 # dualshock gamepad
 alias gamepad="sudo ds4drv" 
