@@ -44,7 +44,7 @@ Plug 'dense-analysis/ale'
 " Multiple cursor
 " Plug 'terryma/vim-multiple-cursors'
 
-" Pairs of mappings
+" Pairs of mappings [*, ]*
 Plug 'https://github.com/tpope/vim-unimpaired'
 
 " Fuzzy findings
@@ -59,6 +59,7 @@ Plug 'Yggdroot/indentLine'
 
 " Emmet
 Plug 'mattn/emmet-vim'
+
 
 
 call plug#end()
@@ -87,16 +88,30 @@ cnoremap <C-j> <Down>
 cnoremap <C-k> <Up>
 cnoremap <C-l> <Right>
 
+" Remap line motions
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+
 " Stop terminal mode
 tnoremap <Esc> <C-\><C-n>
 
+" Press * to search for the term under the cursor or a visual selection and
+" then press a key below to replace all instances of it in the current file.
+nnoremap <Leader>r :%s///g<Left><Left>
 
+" The same as above but instead of acting on the whole file it will be
+" restricted to the previously visually selected range. You can do that by
+" pressing *, visually selecting the range you want it to apply to and then
+" press a key below to replace all instances of it in the current selection.
+xnoremap <Leader>r :s///g<Left><Left>
 
-" -------------------------
-" -- Custom commands --
-" -------------------------
-nmap <leader>ff :FZF<CR>
-
+" Type a replacement term and press . to repeat the replacement again. Useful
+" " for replacing a few instances of the term (comparable to multiple
+" cursors).
+nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
+xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
 " --------------------
 " -- Other Settings --
@@ -105,12 +120,16 @@ let g:gruvbox_italic=1 "Enable italic
 set guifont=Fira\ Code:h12
 colorscheme gruvbox
 
-" set tab width to 4
-filetype plugin indent on
-" set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
-
 " set tab width to 2
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
+
+
+" filetype detection
+filetype plugin indent on
+
+
+" set tab width to 4
+" set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 "Show line number
 set nu 
@@ -124,7 +143,7 @@ set mouse=n
 "Fix Parcel hot realoading
 set backupcopy=yes 
 
-"find autocompletion
+"find cmd autocompletion
 set wildmenu 
 
 "always show signcolumns
@@ -149,6 +168,8 @@ set cmdheight=1
 
 let g:user_emmet_leader_key=',' "Activate emmet with ,,
 
+" no conceal for markdown files
+au FileType markdown setl conceallevel=0
 
 " --------------------
 " -- Functions --
@@ -175,6 +196,23 @@ function! SimpleMenu(options)
     call call(l:choice_map[l:response], [])
   endif
 endfunction
+
+
+" --------------------
+" -- FZF ------
+" --------------------
+
+" Launch fzf with CTRL+P.
+nnoremap <silent> <C-p> :FZF -m<CR>
+" nmap <leader>ff :FZF<CR>
+
+" Map a few common things to do with FZF.
+nnoremap <silent> <Leader><Enter> :Buffers<CR>
+nnoremap <silent> <Leader>l :Lines<CR>
+
+" Allow passing optional flags into the Rg command.
+"   Example: :Rg myterm -g '*.md'
+command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
 " --------------------
 " -- COC Settings --
@@ -221,6 +259,14 @@ let g:ale_sign_warning = '⚠️'
 
 nmap <leader>alf :ALEFix<CR>
 nmap <leader>ald :ALEDetail<CR>
+
+
+" --------------------------
+" -- Indent Line Settings --
+" --------------------------
+
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
+
 " ----------------------
 " -- Airline Settings --
 " ----------------------

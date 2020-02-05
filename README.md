@@ -23,7 +23,9 @@
 
 [Tmux](https://github.com/tmux/tmux)
 
-[Fuzz finder](https://github.com/junegunn/fzf)
+[Fuzzy finder](https://github.com/junegunn/fzf)
+
+[Rigrep](https://github.com/BurntSushi/ripgrep)
 
 ## Instructions
 
