@@ -1,5 +1,4 @@
-# Example aliases
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Aliases
 
 alias zshedit="vim ~/.zshrc"
 alias zshload="source ~/.zshrc"
@@ -25,6 +24,9 @@ alias robo="QT_SCALE_FACTOR=1.2 /home/alex/Downloads/robo3t-1.2.1-linux-x86_64-3
 
 # database containers
 alias mongo="docker run --rm -p 27017:27017 --name docker-mongo -v ~/.mongodb-data:/data/db mongo"
+
+# GitKraken
+alias krak="SHELL=/bin/bash /snap/bin/gitkraken"
 
 # alias postgres="docker run --rm --name pg-docker -e POSTGRES_PASSWORD=postgres -p 5432:5432 -v $HOME/docker/volumes/postgres:/var/lib/postgresql/data postgres"
 # alias psql="docker exec -it pg-docker psql -U postgres"

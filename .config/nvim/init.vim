@@ -12,10 +12,13 @@ Plug 'kana/vim-textobj-entire'
 
 " NerdTree File explorer
 Plug 'scrooloose/nerdtree'
+Plug 'philrunninger/nerdtree-visual-selection'
 
 " Gruvbox theme
 Plug 'morhetz/gruvbox'
 
+" css colors preview
+Plug 'ap/vim-css-color'
 " Status bar
 Plug 'vim-airline/vim-airline'
 
@@ -60,7 +63,8 @@ Plug 'Yggdroot/indentLine'
 " Emmet
 Plug 'mattn/emmet-vim'
 
-
+" clojure nrepl
+Plug 'tpope/vim-fireplace'
 
 call plug#end()
 
@@ -94,6 +98,9 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+nmap \4 :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
+nmap \2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
+
 " Stop terminal mode
 tnoremap <Esc> <C-\><C-n>
 
@@ -113,6 +120,12 @@ xnoremap <Leader>r :s///g<Left><Left>
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
+
+" vim word completion navigating with 'j' and 'k'
+" inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
+" inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+
+
 " --------------------
 " -- Other Settings --
 " --------------------
@@ -120,12 +133,11 @@ let g:gruvbox_italic=1 "Enable italic
 set guifont=Fira\ Code:h12
 colorscheme gruvbox
 
-" set tab width to 2
-set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-
-
 " filetype detection
 filetype plugin indent on
+
+" set tab width to 2
+set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
 
 
 " set tab width to 4
@@ -165,8 +177,10 @@ set hidden
 " Better display for messages
 set cmdheight=1
 
+" Share the default yank register with your system clipboard
+set clipboard=unnamedplus
 
-let g:user_emmet_leader_key=',' "Activate emmet with ,,
+let g:user_emmet_leader_key='\' "Activate emmet with ,,
 
 " no conceal for markdown files
 au FileType markdown setl conceallevel=0

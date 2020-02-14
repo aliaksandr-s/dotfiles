@@ -2,4 +2,4 @@
 set runexec
 
 " open files with vim
-filetype * vim
+filetype * nvim
