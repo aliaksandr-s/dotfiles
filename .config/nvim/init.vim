@@ -14,8 +14,9 @@ Plug 'kana/vim-textobj-entire'
 Plug 'scrooloose/nerdtree'
 Plug 'philrunninger/nerdtree-visual-selection'
 
-" Gruvbox theme
+" themes
 Plug 'morhetz/gruvbox'
+Plug 'arcticicestudio/nord-vim'
 
 " css colors preview
 Plug 'ap/vim-css-color'
@@ -130,7 +131,7 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 " -- Other Settings --
 " --------------------
 let g:gruvbox_italic=1 "Enable italic
-set guifont=Fira\ Code:h12
+" set guifont=Fira\ Code:h12
 colorscheme gruvbox
 
 " filetype detection
