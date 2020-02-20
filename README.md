@@ -27,6 +27,8 @@
 
 [Rigrep](https://github.com/BurntSushi/ripgrep)
 
+[Konsole](https://konsole.kde.org/)
+
 ## Instructions
 
 `cfg` - alias to work with repo
