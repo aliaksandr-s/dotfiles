@@ -67,13 +67,18 @@ Plug 'mattn/emmet-vim'
 " clojure nrepl
 Plug 'tpope/vim-fireplace'
 
+" autoclose tags
+Plug 'alvan/vim-closetag'
+
+" text allignment
+Plug 'junegunn/vim-easy-align'
+
 call plug#end()
 
 
 " -------------------------
 " -- Custom key mappings --
 " -------------------------
-map <C-n> :NERDTreeToggle<CR>
 
 " Replace highlighting
 nnoremap <C-s> :%s///g<left><left>
@@ -99,6 +104,7 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+" Tab width hotkeys
 nmap \4 :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
 nmap \2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
@@ -125,6 +131,14 @@ xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 " vim word completion navigating with 'j' and 'k'
 " inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
 " inoremap <expr> <C-k> pumvisible() ? "\<C-P>" : "\<C-k>"
+
+map <C-n> :NERDTreeToggle %<CR>
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 
 
 " --------------------
@@ -186,32 +200,6 @@ let g:user_emmet_leader_key='\' "Activate emmet with ,,
 " no conceal for markdown files
 au FileType markdown setl conceallevel=0
 
-" --------------------
-" -- Functions --
-" --------------------
-function! SimpleMenu(options)
-  let l:choice_map = {}
-
-  for choice in a:options
-    let l:key = choice[0]
-    let l:choice_map[l:key] = choice[2]
-
-    echohl Boolean
-    echon l:key . ' '
-    echohl None
-    echon choice[1]
-    echo ''
-  endfor
-
-  let l:response = nr2char(getchar())
-
-  redraw!
-
-  if has_key(l:choice_map, l:response)
-    call call(l:choice_map[l:response], [])
-  endif
-endfunction
-
 
 " --------------------
 " -- FZF ------
@@ -254,6 +242,24 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder.
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
 
 " ----------------------
 " -- ALE Settings --
@@ -267,20 +273,16 @@ let g:ale_fixers = {
  \ 'javascriptreact': ['eslint']
  \ }
  
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
+" let g:ale_sign_error = '❌'
+" let g:ale_sign_warning = '⚠️'
+
+" let g:ale_sign_error = "◉"
+" let g:ale_sign_warning = "◉"
 
 " let g:ale_fix_on_save = 1
 
 nmap <leader>alf :ALEFix<CR>
 nmap <leader>ald :ALEDetail<CR>
-
-
-" --------------------------
-" -- Indent Line Settings --
-" --------------------------
-
-let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
 " ----------------------
 " -- Airline Settings --
@@ -295,4 +297,10 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 let g:Powerline_symbols='unicode' "Support unicode
 
-" let g:NERDTreeWinPos = "right" "Open window on the right side 
+
+
+" --------------------------
+" -- Other plugins Settings --
+" --------------------------
+
+let g:indentLine_fileTypeExclude = ['json', 'markdown']
