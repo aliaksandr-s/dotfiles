@@ -73,6 +73,11 @@ Plug 'alvan/vim-closetag'
 " text allignment
 Plug 'junegunn/vim-easy-align'
 
+" smooth scrolling (C-U; C-D)
+Plug 'https://github.com/Kazark/vim-SimpleSmoothScroll'
+
+
+
 call plug#end()
 
 
@@ -200,6 +205,8 @@ let g:user_emmet_leader_key='\' "Activate emmet with ,,
 " no conceal for markdown files
 au FileType markdown setl conceallevel=0
 
+" better go file for javascript
+au FileType javascript,javascriptreact set path=.,src
 
 " --------------------
 " -- FZF ------
@@ -245,7 +252,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Formatting selected code.
@@ -272,12 +279,8 @@ let g:ale_fixers = {
  \ 'javascript': ['eslint'],
  \ 'javascriptreact': ['eslint']
  \ }
- 
-" let g:ale_sign_error = '❌'
-" let g:ale_sign_warning = '⚠️'
 
-" let g:ale_sign_error = "◉"
-" let g:ale_sign_warning = "◉"
+let g:ale_linters = {'clojure': ['clj-kondo']}
 
 " let g:ale_fix_on_save = 1
 
