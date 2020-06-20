@@ -76,7 +76,12 @@ Plug 'junegunn/vim-easy-align'
 " smooth scrolling (C-U; C-D)
 Plug 'https://github.com/Kazark/vim-SimpleSmoothScroll'
 
+" delete buffer without closing window
+Plug 'https://github.com/moll/vim-bbye'
 
+" s-exp - required by vim iced
+Plug 'guns/vim-sexp',    {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
 call plug#end()
 
@@ -132,6 +137,9 @@ xnoremap <Leader>r :s///g<Left><Left>
 nnoremap <silent> s* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> s* "sy:let @/=@s<CR>cgn
 
+" Delete buffer
+nnoremap <Leader>d :Bdelete<CR>
+
 
 " vim word completion navigating with 'j' and 'k'
 " inoremap <expr> <C-j> pumvisible() ? "\<C-N>" : "\<C-j>"
@@ -144,6 +152,7 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
 
 
 " --------------------
@@ -197,6 +206,10 @@ set hidden
 " Better display for messages
 set cmdheight=1
 
+" smartcase search (lowercase is case insensitive)
+set ignorecase
+set smartcase
+
 " Share the default yank register with your system clipboard
 set clipboard=unnamedplus
 
@@ -224,6 +237,49 @@ nnoremap <silent> <Leader>l :Lines<CR>
 "   Example: :Rg myterm -g '*.md'
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
+" Live preview
+" nnoremap <silent> <leader>e :call Fzf_dev()<CR>
+
+" ripgrep
+if executable('rg')
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
+  set grepprg=rg\ --vimgrep
+  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+endif
+
+" Files + devicons
+function! Fzf_dev()
+  let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
+
+  function! s:files()
+    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
+    return s:prepend_icon(l:files)
+  endfunction
+
+  function! s:prepend_icon(candidates)
+    let l:result = []
+    for l:candidate in a:candidates
+      let l:filename = fnamemodify(l:candidate, ':p:t')
+      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
+      call add(l:result, printf('%s %s', l:icon, l:candidate))
+    endfor
+
+    return l:result
+  endfunction
+
+  function! s:edit_file(item)
+    let l:pos = stridx(a:item, ' ')
+    let l:file_path = a:item[pos+1:-1]
+    execute 'silent e' l:file_path
+  endfunction
+
+  call fzf#run({
+        \ 'source': <sid>files(),
+        \ 'sink':   function('s:edit_file'),
+        \ 'options': '-m ' . l:fzf_files_options,
+        \ 'down':    '40%' })
+endfunction
+
 " --------------------
 " -- COC Settings --
 " --------------------
@@ -240,7 +296,7 @@ function! s:show_documentation()
 endfunction
 
 " " Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -284,7 +340,7 @@ let g:ale_linters = {'clojure': ['clj-kondo']}
 
 " let g:ale_fix_on_save = 1
 
-nmap <leader>alf :ALEFix<CR>
+nmap <leader>fix :ALEFix<CR>
 nmap <leader>ald :ALEDetail<CR>
 
 " ----------------------
@@ -293,8 +349,6 @@ nmap <leader>ald :ALEDetail<CR>
 
 let g:airline_powerline_fonts = 1 "Powerline fonts
 let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Custom cursor line
-" let g:airline#extensions#keymap#enabled = 0 "Hide current mapping
-" let g:airline#extensions#xkblayout#enabled = 0 "Turn off xkblayout
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 
@@ -307,3 +361,4 @@ let g:Powerline_symbols='unicode' "Support unicode
 " --------------------------
 
 let g:indentLine_fileTypeExclude = ['json', 'markdown']
+let g:iced_enable_default_key_mappings = v:true

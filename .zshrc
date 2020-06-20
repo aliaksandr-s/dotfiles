@@ -9,6 +9,12 @@ export ZSH_CONFIG="$HOME/.zsh"
 # Brew #
 export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
 
+# Doom Emacs #
+export PATH=~/.emacs.d/bin:$PATH
+
+# IcedVim #
+export PATH=~/.local/share/nvim/plugged/vim-iced/bin:$PATH
+
 # term colors in tmux
 export TERM=xterm-256color
 
