@@ -83,6 +83,9 @@ Plug 'https://github.com/moll/vim-bbye'
 Plug 'guns/vim-sexp',    {'for': 'clojure'}
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
+" Search for a visual selection
+Plug 'https://github.com/nelstrom/vim-visual-star-search'
+
 call plug#end()
 
 
