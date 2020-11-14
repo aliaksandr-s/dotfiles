@@ -62,7 +62,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 
 " Emmet
-Plug 'mattn/emmet-vim'
+" Plug 'mattn/emmet-vim'
 
 " clojure nrepl
 Plug 'tpope/vim-fireplace'
@@ -85,6 +85,12 @@ Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
 " Search for a visual selection
 Plug 'https://github.com/nelstrom/vim-visual-star-search'
+
+" Interactive environment for evaluating code
+Plug 'Olical/conjure', {'tag': 'v4.8.0'}
+
+" janet syntax support
+Plug 'bakpakin/janet.vim'
 
 call plug#end()
 
@@ -116,6 +122,9 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+
+" set localleader as space
+let maplocalleader="\<space>"
 
 " Tab width hotkeys
 nmap \4 :set expandtab tabstop=4 shiftwidth=4 softtabstop=4<CR>
@@ -155,6 +164,10 @@ xmap ga <Plug>(EasyAlign)
 
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+" align inside [] and {}
+nnoremap <buffer> <leader>a[ vi[<c-v>$:EasyAlign\ g/^\S/<cr>gv=
+nnoremap <buffer> <leader>a{ vi{<c-v>$:EasyAlign\ g/^\S/<cr>gv=
 
 
 
@@ -216,7 +229,7 @@ set smartcase
 " Share the default yank register with your system clipboard
 set clipboard=unnamedplus
 
-let g:user_emmet_leader_key='\' "Activate emmet with ,,
+" let g:user_emmet_leader_key='\' "Activate emmet with ,,
 
 " no conceal for markdown files
 au FileType markdown setl conceallevel=0

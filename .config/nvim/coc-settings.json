@@ -1,4 +1,5 @@
 {
  "diagnostic.checkCurrentLine": true, 
- "diagnostic.displayByAle": true
+ "diagnostic.displayByAle": true,
+ "python.jediPath": "/home/linuxbrew/.linuxbrew/lib/python3.8/site-packages"
 }
