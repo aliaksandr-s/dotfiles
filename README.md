@@ -25,9 +25,11 @@
 
 [Fuzzy finder](https://github.com/junegunn/fzf)
 
-[Rigrep](https://github.com/BurntSushi/ripgrep)
+[Rigrep - search](https://github.com/BurntSushi/ripgrep)
 
-[Konsole](https://konsole.kde.org/)
+[Konsole - terminal](https://konsole.kde.org/)
+
+[Bat - syntax highligting](https://github.com/sharkdp/bat)
 
 ## Instructions
 

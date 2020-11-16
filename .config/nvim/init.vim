@@ -80,8 +80,12 @@ Plug 'https://github.com/Kazark/vim-SimpleSmoothScroll'
 Plug 'https://github.com/moll/vim-bbye'
 
 " s-exp - required by vim iced
-Plug 'guns/vim-sexp',    {'for': 'clojure'}
+Plug 'guns/vim-sexp' 
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
+
+" s-exp for regular people
+Plug 'git://github.com/tpope/vim-sexp-mappings-for-regular-people'
+Plug 'git://github.com/tpope/vim-repeat'
 
 " Search for a visual selection
 Plug 'https://github.com/nelstrom/vim-visual-star-search'
@@ -91,6 +95,11 @@ Plug 'Olical/conjure', {'tag': 'v4.8.0'}
 
 " janet syntax support
 Plug 'bakpakin/janet.vim'
+
+" modern generic interactive finder and dispatcher
+Plug 'liuchengxu/vim-clap'
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
 
 call plug#end()
 
@@ -241,12 +250,17 @@ au FileType javascript,javascriptreact set path=.,src
 " -- FZF ------
 " --------------------
 
-" Launch fzf with CTRL+P.
-nnoremap <silent> <C-p> :FZF -m<CR>
+" Launch Fzf hotkeys
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <C-f> :Ag<CR>
 " nmap <leader>ff :FZF<CR>
 
 " Map a few common things to do with FZF.
-nnoremap <silent> <Leader><Enter> :Buffers<CR>
+nnoremap <silent> <Leader>ff :Files<CR>
+nnoremap <silent> <Leader>ff! :Files!<CR>
+nnoremap <silent> <Leader>ag :Ag<CR>
+nnoremap <silent> <Leader>ag! :Ag!<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 
 " Allow passing optional flags into the Rg command.
