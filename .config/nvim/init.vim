@@ -100,6 +100,11 @@ Plug 'bakpakin/janet.vim'
 Plug 'liuchengxu/vim-clap'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
+" Better Django support
+Plug 'https://github.com/tweekmonster/django-plus.vim'
+
+" Start screen and sessions
+Plug 'mhinz/vim-startify'
 
 call plug#end()
 
@@ -260,55 +265,16 @@ nnoremap <silent> <Leader>ff :Files<CR>
 nnoremap <silent> <Leader>ff! :Files!<CR>
 nnoremap <silent> <Leader>ag :Ag<CR>
 nnoremap <silent> <Leader>ag! :Ag!<CR>
+nnoremap <silent> <Leader>rg :Rg ''<CR>
+nnoremap <silent> <Leader>rg! :Rg! ''<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 
 " Allow passing optional flags into the Rg command.
-"   Example: :Rg myterm -g '*.md'
+" Example: :Rg myterm -g '*.md'
+" Example: :Rg -t html myterm
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
-" Live preview
-" nnoremap <silent> <leader>e :call Fzf_dev()<CR>
-
-" ripgrep
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
-
-" Files + devicons
-function! Fzf_dev()
-  let l:fzf_files_options = '--preview "bat --theme="OneHalfDark" --style=numbers,changes --color always {2..-1} | head -'.&lines.'"'
-
-  function! s:files()
-    let l:files = split(system($FZF_DEFAULT_COMMAND), '\n')
-    return s:prepend_icon(l:files)
-  endfunction
-
-  function! s:prepend_icon(candidates)
-    let l:result = []
-    for l:candidate in a:candidates
-      let l:filename = fnamemodify(l:candidate, ':p:t')
-      let l:icon = WebDevIconsGetFileTypeSymbol(l:filename, isdirectory(l:filename))
-      call add(l:result, printf('%s %s', l:icon, l:candidate))
-    endfor
-
-    return l:result
-  endfunction
-
-  function! s:edit_file(item)
-    let l:pos = stridx(a:item, ' ')
-    let l:file_path = a:item[pos+1:-1]
-    execute 'silent e' l:file_path
-  endfunction
-
-  call fzf#run({
-        \ 'source': <sid>files(),
-        \ 'sink':   function('s:edit_file'),
-        \ 'options': '-m ' . l:fzf_files_options,
-        \ 'down':    '40%' })
-endfunction
 
 " --------------------
 " -- COC Settings --
@@ -376,7 +342,6 @@ nmap <leader>ald :ALEDetail<CR>
 " ----------------------
 " -- Airline Settings --
 " ----------------------
-
 let g:airline_powerline_fonts = 1 "Powerline fonts
 let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Custom cursor line
 let g:airline#extensions#tabline#enabled = 1
@@ -385,10 +350,23 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:Powerline_symbols='unicode' "Support unicode
 
 
+" ----------------------
+" -- Startify Settings --
+" ----------------------
+let g:startify_change_to_dir       = 0
+let g:startify_session_persistence = 1
+
+let g:startify_lists = [
+      \ { 'type': 'sessions',  'header': ['   Sessions']       },
+      \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
+      \ { 'type': 'files',     'header': ['   MRU']            },
+      \ { 'type': 'bookmarks', 'header': ['   Bookmarks']      },
+      \ { 'type': 'commands',  'header': ['   Commands']       },
+      \ ]
+
 
 " --------------------------
 " -- Other plugins Settings --
 " --------------------------
-
 let g:indentLine_fileTypeExclude = ['json', 'markdown']
 let g:iced_enable_default_key_mappings = v:true
