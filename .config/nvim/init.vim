@@ -17,11 +17,14 @@ Plug 'philrunninger/nerdtree-visual-selection'
 " themes
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'https://github.com/nanotech/jellybeans.vim'
 
 " css colors preview
 Plug 'ap/vim-css-color'
+
 " Status bar
-Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline'
 
 " Icons for Airline and Nerdtree
 Plug 'ryanoasis/vim-devicons'
@@ -64,8 +67,19 @@ Plug 'Yggdroot/indentLine'
 " Emmet
 " Plug 'mattn/emmet-vim'
 
-" clojure nrepl
+
+" NREPLS "
 Plug 'tpope/vim-fireplace'
+
+" s-exp - required by vim iced
+Plug 'guns/vim-sexp' 
+
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
+
+" Interactive environment for evaluating code
+Plug 'Olical/conjure', {'tag': 'v4.8.0'}
+"""""""
+
 
 " autoclose tags
 Plug 'alvan/vim-closetag'
@@ -79,9 +93,6 @@ Plug 'https://github.com/Kazark/vim-SimpleSmoothScroll'
 " delete buffer without closing window
 Plug 'https://github.com/moll/vim-bbye'
 
-" s-exp - required by vim iced
-Plug 'guns/vim-sexp' 
-Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
 " s-exp for regular people
 Plug 'git://github.com/tpope/vim-sexp-mappings-for-regular-people'
@@ -90,12 +101,6 @@ Plug 'git://github.com/tpope/vim-repeat'
 " Search for a visual selection
 Plug 'https://github.com/nelstrom/vim-visual-star-search'
 
-" Interactive environment for evaluating code
-Plug 'Olical/conjure', {'tag': 'v4.8.0'}
-
-" janet syntax support
-Plug 'bakpakin/janet.vim'
-
 " modern generic interactive finder and dispatcher
 Plug 'liuchengxu/vim-clap'
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
@@ -103,8 +108,17 @@ Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 " Better Django support
 Plug 'https://github.com/tweekmonster/django-plus.vim'
 
+" janet syntax support
+Plug 'bakpakin/janet.vim'
+
 " Start screen and sessions
 Plug 'mhinz/vim-startify'
+
+" Status line
+Plug 'itchyny/lightline.vim'
+
+" Buffer tabs
+Plug 'https://github.com/ap/vim-buftabline'
 
 call plug#end()
 
@@ -114,7 +128,7 @@ call plug#end()
 " -------------------------
 
 " Replace highlighting
-nnoremap <C-s> :%s///g<left><left>
+nnoremap <Leader>r :%s///g<Left><Left>
 
 " Clear highlighting
 " nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
@@ -137,6 +151,9 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+" Whole Line autocompletion, because it's not working with remapped c-l move
+inoremap <C-x><C-x> <C-x><C-l>
+
 " set localleader as space
 let maplocalleader="\<space>"
 
@@ -146,16 +163,6 @@ nmap \2 :set expandtab tabstop=2 shiftwidth=2 softtabstop=2<CR>
 
 " Stop terminal mode
 tnoremap <Esc> <C-\><C-n>
-
-" Press * to search for the term under the cursor or a visual selection and
-" then press a key below to replace all instances of it in the current file.
-nnoremap <Leader>r :%s///g<Left><Left>
-
-" The same as above but instead of acting on the whole file it will be
-" restricted to the previously visually selected range. You can do that by
-" pressing *, visually selecting the range you want it to apply to and then
-" press a key below to replace all instances of it in the current selection.
-xnoremap <Leader>r :s///g<Left><Left>
 
 " Type a replacement term and press . to repeat the replacement again. Useful
 " " for replacing a few instances of the term (comparable to multiple
@@ -184,26 +191,48 @@ nnoremap <buffer> <leader>a[ vi[<c-v>$:EasyAlign\ g/^\S/<cr>gv=
 nnoremap <buffer> <leader>a{ vi{<c-v>$:EasyAlign\ g/^\S/<cr>gv=
 
 
+" --------------------
+" -- Theme -----------
+" --------------------
+let g:Powerline_symbols='unicode' "Support unicode
+" set guifont=Fira\ Code:h18
+
+function! LightTheme()
+  colorscheme PaperColor
+  let $BAT_THEME='gruvbox-light'
+  set background=light
+endfunction
+
+function! DarkTheme()
+  colorscheme PaperColor
+  let $BAT_THEME='gruvbox-dark'
+  set background=dark
+endfunction
+
+call LightTheme()
+
+" colorscheme gruvbox
+" let g:gruvbox_italic=1 "Enable italic
+
 
 " --------------------
 " -- Other Settings --
 " --------------------
-let g:gruvbox_italic=1 "Enable italic
-" set guifont=Fira\ Code:h12
-colorscheme gruvbox
 
-" filetype detection
+" omni-completion with <C-x><C-o>
+" and filetype detection
+set nocompatible
 filetype plugin indent on
 
 " set tab width to 2
 set shiftwidth=2 tabstop=2 softtabstop=2 expandtab
-
-
-" set tab width to 4
 " set shiftwidth=4 tabstop=4 softtabstop=4 expandtab
 
 "Show line number
 set nu 
+
+" Don't add eol at the end of file
+" set noendofline
 
 "Set mouse mode
 set mouse=n 
@@ -258,15 +287,16 @@ au FileType javascript,javascriptreact set path=.,src
 " Launch Fzf hotkeys
 nnoremap <silent> <C-p> :Files<CR>
 nnoremap <silent> <C-f> :Ag<CR>
+nnoremap <silent> <C-f><C-f> :Ag!<CR>
 " nmap <leader>ff :FZF<CR>
 
 " Map a few common things to do with FZF.
-nnoremap <silent> <Leader>ff :Files<CR>
-nnoremap <silent> <Leader>ff! :Files!<CR>
+nnoremap <silent> <Leader>f :Files<CR>
+nnoremap <silent> <Leader>ff :Files!<CR>
 nnoremap <silent> <Leader>ag :Ag<CR>
-nnoremap <silent> <Leader>ag! :Ag!<CR>
+nnoremap <silent> <Leader>agg :Ag!<CR>
 nnoremap <silent> <Leader>rg :Rg ''<CR>
-nnoremap <silent> <Leader>rg! :Rg! ''<CR>
+nnoremap <silent> <Leader>rgg :Rg! ''<CR>
 nnoremap <silent> <Leader>b :Buffers<CR>
 nnoremap <silent> <Leader>l :Lines<CR>
 
@@ -275,6 +305,24 @@ nnoremap <silent> <Leader>l :Lines<CR>
 " Example: :Rg -t html myterm
 command! -bang -nargs=* Rg call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case " . <q-args>, 1, <bang>0)
 
+" exclude filenames from search
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}), <bang>0)
+
+" Fix fzf colors with ligt theme
+let g:fzf_colors =
+\ { 'fg':      ['fg', 'Normal'],
+  \ 'bg':      ['bg', 'Normal'],
+  \ 'hl':      ['fg', 'Comment'],
+  \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+  \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+  \ 'hl+':     ['fg', 'Statement'],
+  \ 'info':    ['fg', 'PreProc'],
+  \ 'border':  ['fg', 'Ignore'],
+  \ 'prompt':  ['fg', 'Conditional'],
+  \ 'pointer': ['fg', 'Exception'],
+  \ 'marker':  ['fg', 'Keyword'],
+  \ 'spinner': ['fg', 'Label'],
+  \ 'header':  ['fg', 'Comment'] }
 
 " --------------------
 " -- COC Settings --
@@ -319,10 +367,15 @@ augroup mygroup
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
+" Use <c-e> to trigger completion.
+inoremap <silent><expr> <c-e> coc#refresh()
 
 " ----------------------
 " -- ALE Settings --
 " ----------------------
+
+" disable lsp to leverage coc
+let g:ale_disable_lsp = 1
 
 " show info in a tooltip
 let g:ale_set_balloons = 1
@@ -340,14 +393,17 @@ nmap <leader>fix :ALEFix<CR>
 nmap <leader>ald :ALEDetail<CR>
 
 " ----------------------
-" -- Airline Settings --
+" -- Status Line Settings --
 " ----------------------
-let g:airline_powerline_fonts = 1 "Powerline fonts
-let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Custom cursor line
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
+" let g:airline_powerline_fonts = 1 "Powerline fonts
+" let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Custom cursor line
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#buffer_nr_show = 1
 
-let g:Powerline_symbols='unicode' "Support unicode
+let g:lightline = {
+      \ 'colorscheme': 'PaperColor',
+      \ }
+
 
 
 " ----------------------
