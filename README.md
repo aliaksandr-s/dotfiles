@@ -2,6 +2,9 @@
 
 ## Extras
 - [Brew - package manager](https://brew.sh/)
+- [Fuzzy finder](https://github.com/junegunn/fzf)
+- [Rigrep - search](https://github.com/BurntSushi/ripgrep)
+- [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
 - [Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 - [Konsole - terminal](https://konsole.kde.org/)
@@ -13,11 +16,10 @@
 - [nvim - modern vim](https://neovim.io/)
 - [Vifm - vi file manager](https://vifm.info/)
 - [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
-- [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
-- [Fuzzy finder](https://github.com/junegunn/fzf)
-- [Rigrep - search](https://github.com/BurntSushi/ripgrep)
 
 ## Instructions
-`cfg` - alias to work with repo
+- `cfg` - alias to work with repo
+- `cfg add -u` - add only updated files
+- `cfg commit -a -m "Update config"` - commit changes
 
 [Set up Instruction](https://developer.atlassian.com/blog/2016/02/best-way-to-store-dotfiles-git-bare-repo/)
