@@ -15,6 +15,10 @@ export PATH=/home/linuxbrew/.linuxbrew/Cellar/janet/1.12.2/bin:$PATH
 # IcedVim #
 export PATH=~/.local/share/nvim/plugged/vim-iced/bin:$PATH
 
+# Deno #
+export DENO_INSTALL="/home/alex/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 
 # term colors in tmux
 export TERM=xterm-256color

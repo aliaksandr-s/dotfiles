@@ -3,7 +3,10 @@
 alias zshedit="vim ~/.zshrc"
 alias zshload="source ~/.zshrc"
 alias aliasedit="vim ~/.zsh/aliases.zsh"
+
 alias vim="nvim"
+# boost vim productivity by gpu terminal  
+function vimd() { alacritty -e nvim "$@" & disown }
 
 # dualshock gamepad
 alias gamepad="sudo ds4drv" 

@@ -1,6 +1,4 @@
 " -------------
-" -- Plugins --
-" -------------
 call plug#begin('~/.local/share/nvim/plugged')
 
 " Use gcc to comment out a line (takes a count)
@@ -78,6 +76,9 @@ Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
 " Interactive environment for evaluating code
 Plug 'Olical/conjure', {'tag': 'v4.8.0'}
+
+"Repl for any target
+Plug 'https://github.com/jpalardy/vim-slime'
 """""""
 
 
@@ -100,10 +101,6 @@ Plug 'git://github.com/tpope/vim-repeat'
 
 " Search for a visual selection
 Plug 'https://github.com/nelstrom/vim-visual-star-search'
-
-" modern generic interactive finder and dispatcher
-Plug 'liuchengxu/vim-clap'
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " Better Django support
 Plug 'https://github.com/tweekmonster/django-plus.vim'
@@ -424,5 +421,9 @@ let g:startify_lists = [
 " --------------------------
 " -- Other plugins Settings --
 " --------------------------
+
 let g:indentLine_fileTypeExclude = ['json', 'markdown']
+
 let g:iced_enable_default_key_mappings = v:true
+
+let g:slime_target = "neovim"
