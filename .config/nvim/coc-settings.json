@@ -1,7 +1,8 @@
 {
  "diagnostic.checkCurrentLine": true, 
+ "diagnostic.messageTarget": "float",
  "diagnostic.displayByAle": false,
  "python.jediPath": "/home/linuxbrew/.linuxbrew/lib/python3.8/site-packages",
  "javascript.suggestionActions.enabled": false,
- "typescript.suggestionActions.enabled": false
+ "typescript.suggestionActions.enabled": false,
 }
