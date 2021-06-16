@@ -18,11 +18,12 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'https://github.com/nanotech/jellybeans.vim'
 
+" Status line
+Plug 'itchyny/lightline.vim'
+" Plug 'vim-airline/vim-airline'
+
 " css colors preview
 Plug 'ap/vim-css-color'
-
-" Status bar
-" Plug 'vim-airline/vim-airline'
 
 " Icons for Airline and Nerdtree
 Plug 'ryanoasis/vim-devicons'
@@ -110,9 +111,6 @@ Plug 'bakpakin/janet.vim'
 
 " Start screen and sessions
 Plug 'mhinz/vim-startify'
-
-" Status line
-Plug 'itchyny/lightline.vim'
 
 " Buffer tabs
 Plug 'https://github.com/ap/vim-buftabline'
@@ -418,6 +416,13 @@ let g:startify_lists = [
       \ ]
 
 
+" ----------------------
+" -- Indent Line Settings --
+" ----------------------
+
+" more subtle color for indent line
+let g:indentLine_color_term = 252 
+
 " --------------------------
 " -- Other plugins Settings --
 " --------------------------
@@ -427,3 +432,6 @@ let g:indentLine_fileTypeExclude = ['json', 'markdown']
 let g:iced_enable_default_key_mappings = v:true
 
 let g:slime_target = "neovim"
+
+
+

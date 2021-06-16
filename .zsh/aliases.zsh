@@ -5,7 +5,7 @@ alias zshload="source ~/.zshrc"
 alias aliasedit="vim ~/.zsh/aliases.zsh"
 
 alias vim="nvim"
-# boost vim productivity by gpu terminal  
+# boost vim productivity by gpu terminal launch vim in a separate alacrity session
 function vimd() { alacritty -e nvim "$@" & disown }
 
 # dualshock gamepad

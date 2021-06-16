@@ -1,2 +1,29 @@
 # window:
   # startup_mode: Fullscreen
+
+# Font configuration (changes require restart)
+font:
+  normal:
+    family: Iosevka
+    style: Regular
+    # style: Regular
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+
+  bold:
+    family: Iosevka
+    style: Medium
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+
+  italic:
+    family: Iosevka
+    style: Oblique
+    # style: "Light Oblique"
+    # style: "Light Italic"
+    # family: "Fira Code"
+    # family: "Source Code Pro"
+    # style: "Medium Italic"
+
+  # Point size of the font
+  size: 11.5
