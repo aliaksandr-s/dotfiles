@@ -57,3 +57,4 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 #   Requires: https://github.com/BurntSushi/ripgrep (for using rg below)
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+

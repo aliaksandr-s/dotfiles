@@ -1,6 +1,6 @@
 [Appearance]
 BoldIntense=false
-ColorScheme=Nordic
+ColorScheme=papercolor-light
 Font=Fira Code,11,-1,5,50,0,0,0,0,0
 
 [General]

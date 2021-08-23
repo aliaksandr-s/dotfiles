@@ -1,3 +1,15 @@
+ let g:coc_global_extensions = [
+ \ 'coc-json',
+ \ 'coc-tsserver',
+ \ 'coc-eslint',
+ \ 'coc-pyright',
+ \ 'coc-html',
+ \ 'coc-css',
+ \ 'coc-yaml',
+ \ 'coc-clangd',
+ \ ]
+
+
 " -------------
 call plug#begin('~/.local/share/nvim/plugged')
 
@@ -11,6 +23,9 @@ Plug 'kana/vim-textobj-entire'
 " NerdTree File explorer
 Plug 'scrooloose/nerdtree'
 Plug 'philrunninger/nerdtree-visual-selection'
+
+" Git support
+Plug 'https://github.com/tpope/vim-fugitive'
 
 " themes
 Plug 'morhetz/gruvbox'
@@ -42,10 +57,9 @@ Plug 'airblade/vim-gitgutter'
 
 " Autocmpletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" :CocInstall coc-tsserver coc-json coc-eslint
 
 " Linting
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
 
 " Multiple cursor
 " Plug 'terryma/vim-multiple-cursors'
@@ -103,17 +117,16 @@ Plug 'git://github.com/tpope/vim-repeat'
 " Search for a visual selection
 Plug 'https://github.com/nelstrom/vim-visual-star-search'
 
-" Better Django support
-Plug 'https://github.com/tweekmonster/django-plus.vim'
-
-" janet syntax support
+" Languages and frameworks support
 Plug 'bakpakin/janet.vim'
+Plug 'https://github.com/tweekmonster/django-plus.vim'
 
 " Start screen and sessions
 Plug 'mhinz/vim-startify'
 
 " Buffer tabs
-Plug 'https://github.com/ap/vim-buftabline'
+" Plug 'https://github.com/ap/vim-buftabline'
+Plug 'akinsho/nvim-bufferline.lua'
 
 call plug#end()
 
@@ -190,6 +203,12 @@ nnoremap <buffer> <leader>a{ vi{<c-v>$:EasyAlign\ g/^\S/<cr>gv=
 " -- Theme -----------
 " --------------------
 let g:Powerline_symbols='unicode' "Support unicode
+
+set termguicolors
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+set t_Co=256
+
 " set guifont=Fira\ Code:h18
 
 function! LightTheme()
@@ -204,6 +223,7 @@ function! DarkTheme()
   set background=dark
 endfunction
 
+
 call LightTheme()
 
 " colorscheme gruvbox
@@ -213,6 +233,7 @@ call LightTheme()
 " --------------------
 " -- Other Settings --
 " --------------------
+set sessionoptions+=globals "save globals to session (bufferlines relies on it to save buffer position) 
 
 " omni-completion with <C-x><C-o>
 " and filetype detection
@@ -275,19 +296,24 @@ au FileType markdown setl conceallevel=0
 " better go file for javascript
 au FileType javascript,javascriptreact set path=.,src
 
+" fold by indentaion
+set foldmethod=indent
+
+" unfold all when open a file
+au BufRead * normal zR
+
 " --------------------
 " -- FZF ------
 " --------------------
 
 " Launch Fzf hotkeys
 nnoremap <silent> <C-p> :Files<CR>
-nnoremap <silent> <C-f> :Ag<CR>
-nnoremap <silent> <C-f><C-f> :Ag!<CR>
+nnoremap <silent> <C-f> :Ag!<CR>
+" nnoremap <silent> <C-f><C-f> :Ag!<CR>
 " nmap <leader>ff :FZF<CR>
 
 " Map a few common things to do with FZF.
-nnoremap <silent> <Leader>f :Files<CR>
-nnoremap <silent> <Leader>ff :Files!<CR>
+nnoremap <silent> <Leader>f :Files!<CR>
 nnoremap <silent> <Leader>ag :Ag<CR>
 nnoremap <silent> <Leader>agg :Ag!<CR>
 nnoremap <silent> <Leader>rg :Rg ''<CR>
@@ -377,10 +403,15 @@ let g:ale_set_balloons = 1
 
 let g:ale_fixers = {
  \ 'javascript': ['eslint'],
- \ 'javascriptreact': ['eslint']
+ \ 'javascriptreact': ['eslint'],
+ \ 'python': ['autopep8' ,'yapf'],
  \ }
 
-let g:ale_linters = {'clojure': ['clj-kondo']}
+let g:ale_linters = {
+ \ 'javascript': ['eslint'],
+ \ 'clojure': ['clj-kondo'],
+ \ 'python': ['pylint'],
+ \ }
 
 " let g:ale_fix_on_save = 1
 
@@ -397,6 +428,13 @@ nmap <leader>ald :ALEDetail<CR>
 
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
       \ }
 
 
@@ -406,7 +444,6 @@ let g:lightline = {
 " ----------------------
 let g:startify_change_to_dir       = 0
 let g:startify_session_persistence = 1
-
 let g:startify_lists = [
       \ { 'type': 'sessions',  'header': ['   Sessions']       },
       \ { 'type': 'dir',       'header': ['   MRU '. getcwd()] },
@@ -419,19 +456,41 @@ let g:startify_lists = [
 " ----------------------
 " -- Indent Line Settings --
 " ----------------------
-
-" more subtle color for indent line
+"more subtle color for indent line
 let g:indentLine_color_term = 252 
+let g:indentLine_color_gui = '#d4d4d4'
+
+
+" ----------------------
+" -- Bufferline Settings --
+" ----------------------
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>]b :BufferLineCycleNext<CR>
+nnoremap <silent>[b :BufferLineCyclePrev<CR>
+
+" These commands will move the current buffer backwards or forwards in the bufferline
+nnoremap <silent>]]b :BufferLineMoveNext<CR>
+nnoremap <silent>[[b :BufferLineMovePrev<CR>
+
+lua << EOF
+require("bufferline").setup{
+  options = {
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
+      return " " .. buf.name
+    end,
+  }
+}
+EOF
+
 
 " --------------------------
 " -- Other plugins Settings --
 " --------------------------
-
 let g:indentLine_fileTypeExclude = ['json', 'markdown']
 
 let g:iced_enable_default_key_mappings = v:true
 
 let g:slime_target = "neovim"
-
-
-
