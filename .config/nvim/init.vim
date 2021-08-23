@@ -25,6 +25,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'philrunninger/nerdtree-visual-selection'
 
 " Git support
+Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-fugitive'
 
 " themes
@@ -51,9 +52,6 @@ Plug 'sheerun/vim-polyglot'
 
 " Notes taking
 Plug 'vimwiki/vimwiki'
-
-" Git gutter
-Plug 'airblade/vim-gitgutter'
 
 " Autocmpletion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -205,8 +203,6 @@ nnoremap <buffer> <leader>a{ vi{<c-v>$:EasyAlign\ g/^\S/<cr>gv=
 let g:Powerline_symbols='unicode' "Support unicode
 
 set termguicolors
-" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set t_Co=256
 
 " set guifont=Fira\ Code:h18
@@ -421,11 +417,6 @@ nmap <leader>ald :ALEDetail<CR>
 " ----------------------
 " -- Status Line Settings --
 " ----------------------
-" let g:airline_powerline_fonts = 1 "Powerline fonts
-" let g:airline_section_z = "\ue0a1:%l/%L Col:%c" "Custom cursor line
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#buffer_nr_show = 1
-
 let g:lightline = {
       \ 'colorscheme': 'PaperColor',
       \ 'active': {
@@ -484,6 +475,7 @@ require("bufferline").setup{
   }
 }
 EOF
+
 
 
 " --------------------------
