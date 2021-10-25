@@ -118,6 +118,7 @@ Plug 'https://github.com/nelstrom/vim-visual-star-search'
 " Languages and frameworks support
 Plug 'bakpakin/janet.vim'
 Plug 'https://github.com/tweekmonster/django-plus.vim'
+Plug 'tikhomirov/vim-glsl'
 
 " Start screen and sessions
 Plug 'mhinz/vim-startify'
@@ -292,11 +293,18 @@ au FileType markdown setl conceallevel=0
 " better go file for javascript
 au FileType javascript,javascriptreact set path=.,src
 
+" disable folding
+set nofoldenable
+
 " fold by indentaion
 set foldmethod=indent
 
 " unfold all when open a file
-au BufRead * normal zR
+au BufWinEnter * normal zR
+
+" Set the filetype based on the file's extension, overriding any
+" 'filetype' that has already been set
+au BufRead,BufNewFile .env* set filetype=sh
 
 " --------------------
 " -- FZF ------
@@ -309,13 +317,15 @@ nnoremap <silent> <C-f> :Ag!<CR>
 " nmap <leader>ff :FZF<CR>
 
 " Map a few common things to do with FZF.
-nnoremap <silent> <Leader>f :Files!<CR>
+" nnoremap <silent> <Leader>f :Files!<CR>
+nnoremap <silent> <Leader>f :Ag!<CR>
+nnoremap <silent> <Leader>b :Buffers<CR>
+nnoremap <silent> <Leader>l :Lines<CR>
+
 nnoremap <silent> <Leader>ag :Ag<CR>
 nnoremap <silent> <Leader>agg :Ag!<CR>
 nnoremap <silent> <Leader>rg :Rg ''<CR>
 nnoremap <silent> <Leader>rgg :Rg! ''<CR>
-nnoremap <silent> <Leader>b :Buffers<CR>
-nnoremap <silent> <Leader>l :Lines<CR>
 
 " Allow passing optional flags into the Rg command.
 " Example: :Rg myterm -g '*.md'
@@ -373,8 +383,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -411,7 +421,7 @@ let g:ale_linters = {
 
 " let g:ale_fix_on_save = 1
 
-nmap <leader>fix :ALEFix<CR>
+" nmap <leader>fix :ALEFix<CR>
 nmap <leader>ald :ALEDetail<CR>
 
 " ----------------------

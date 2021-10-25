@@ -60,3 +60,6 @@ colors:
     magenta: '0xd75f00'
     cyan:    '0x005faf'
     white:   '0x005f87'
+
+key_bindings:
+  - { key: F11, action: ToggleFullscreen }
