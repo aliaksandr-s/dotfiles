@@ -3,3 +3,6 @@ set runexec
 
 " open files with vim
 filetype * nvim
+
+" set theme
+colorscheme papercolor-light 
