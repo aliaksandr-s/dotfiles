@@ -127,6 +127,9 @@ Plug 'mhinz/vim-startify'
 " Plug 'https://github.com/ap/vim-buftabline'
 Plug 'akinsho/nvim-bufferline.lua'
 
+" work with csv in vim
+" Plug 'chrisbra/csv.vim'
+
 call plug#end()
 
 
@@ -235,6 +238,7 @@ set sessionoptions+=globals "save globals to session (bufferlines relies on it t
 " omni-completion with <C-x><C-o>
 " and filetype detection
 set nocompatible
+filetype plugin on
 filetype plugin indent on
 
 " set tab width to 2
