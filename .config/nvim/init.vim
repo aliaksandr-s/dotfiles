@@ -401,6 +401,9 @@ augroup end
 " Use <c-e> to trigger completion.
 inoremap <silent><expr> <c-e> coc#refresh()
 
+" If pyright cannot detect the 'project root' correctly, it may not work as you expect. 
+autocmd FileType python let b:coc_root_patterns = ['.git', '.env', 'venv', '.venv', 'setup.cfg', 'setup.py', 'pyproject.toml', 'pyrightconfig.json']
+
 " ----------------------
 " -- ALE Settings --
 " ----------------------
