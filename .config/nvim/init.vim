@@ -7,6 +7,8 @@
  \ 'coc-css',
  \ 'coc-yaml',
  \ 'coc-clangd',
+ \ 'coc-clangd',
+ \ 'coc-svelte',
  \ ]
 
 
@@ -29,10 +31,12 @@ Plug 'airblade/vim-gitgutter'
 Plug 'https://github.com/tpope/vim-fugitive'
 
 " themes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'junegunn/seoul256.vim'
 Plug 'morhetz/gruvbox'
 Plug 'arcticicestudio/nord-vim'
-Plug 'NLKNguyen/papercolor-theme'
 Plug 'https://github.com/nanotech/jellybeans.vim'
+Plug 'sainnhe/everforest'
 
 " Status line
 Plug 'itchyny/lightline.vim'
@@ -212,22 +216,30 @@ set t_Co=256
 " set guifont=Fira\ Code:h18
 
 function! LightTheme()
-  colorscheme PaperColor
-  let $BAT_THEME='gruvbox-light'
   set background=light
+  " let $BAT_THEME='gruvbox-light'
+  " let $BAT_THEME='Solarized (light)'
+  let $BAT_THEME='GitHub'
+
+
+  let g:everforest_better_performance = 1
+  colo everforest
+  " colo PaperColor
 endfunction
 
 function! DarkTheme()
-  colorscheme PaperColor
-  let $BAT_THEME='gruvbox-dark'
   set background=dark
+  " let $BAT_THEME='gruvbox-dark'
+  " let $BAT_THEME='Solarized (dark)'
+  let $BAT_THEME='GitHub'
+
+  let g:everforest_better_performance = 1
+  colo everforest
+  " colo PaperColor
 endfunction
 
 
 call LightTheme()
-
-" colorscheme gruvbox
-" let g:gruvbox_italic=1 "Enable italic
 
 
 " --------------------
@@ -387,8 +399,8 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 
 " Formatting selected code.
-" xmap <leader>f  <Plug>(coc-format-selected)
-" nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format)
+nmap <leader>f  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -435,7 +447,7 @@ nmap <leader>ald :ALEDetail<CR>
 " -- Status Line Settings --
 " ----------------------
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'everforest',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
@@ -466,7 +478,7 @@ let g:startify_lists = [
 " ----------------------
 "more subtle color for indent line
 let g:indentLine_color_term = 252 
-let g:indentLine_color_gui = '#d4d4d4'
+let g:indentLine_color_gui = '#dfdfdf'
 
 
 " ----------------------

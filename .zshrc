@@ -19,6 +19,9 @@ export PATH=~/.local/share/nvim/plugged/vim-iced/bin:$PATH
 export DENO_INSTALL="/home/alex/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
+# Python #
+export PYTHONPATH=$PYTHONPATH:/home/alex/Desktop/Work/Lyte/lyte
+
 
 # term colors in tmux
 export TERM=xterm-256color
@@ -58,3 +61,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=60'
 export FZF_DEFAULT_COMMAND="rg --files --hidden --follow --glob '!.git'"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
