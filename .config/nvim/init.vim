@@ -322,6 +322,9 @@ au BufWinEnter * normal zR
 " 'filetype' that has already been set
 au BufRead,BufNewFile .env* set filetype=sh
 
+" Fix broken highlighting on scroll
+autocmd BufEnter * syntax sync fromstart
+
 " --------------------
 " -- FZF ------
 " --------------------
@@ -498,6 +501,8 @@ require("bufferline").setup{
   options = {
     show_buffer_close_icons = false,
     show_close_icon = false,
+    persist_buffer_sort = true,
+    sort_by = 'insert_at_end',
     name_formatter = function(buf)  -- buf contains a "name", "path" and "bufnr"
       return " " .. buf.name
     end,
