@@ -1,0 +1,11 @@
+map ctrl+shift+l next_tab
+map ctrl+shift+h previous_tab
+
+# Theme
+include ./themes/seoul256-light.conf
+
+
+# BEGIN_KITTY_THEME
+# Gruvbox Material Light Soft
+include current-theme.conf
+# END_KITTY_THEME
