@@ -17,6 +17,9 @@
 - [Vifm - vi file manager](https://vifm.info/)
 - [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
 
+## Tweaks
+- [Swap ctrl and alt on linux](https://askubuntu.com/questions/885045/how-to-swap-ctrl-and-alt-keys-in-ubuntu-16-04)
+
 ## Instructions
 - `cfg` - alias to work with repo
 - `cfg add -u` - add only updated files
