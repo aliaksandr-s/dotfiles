@@ -2,8 +2,12 @@
 
 ## Essentials
 - [Brew - package manager](https://brew.sh/)
+- [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) | [install script](https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e)
 - [Fish shell](https://fishshell.com/)
 - [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
+
+
+
 
 ## Mac essentials
 - [Karabiner elements - keyboard remapping](https://karabiner-elements.pqrs.org/)
@@ -13,7 +17,6 @@
 - [Rigrep - search](https://github.com/BurntSushi/ripgrep)
 - [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
 - [Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
-- [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts)
 - [Konsole - terminal](https://konsole.kde.org/)
 - [Alacritty - GPU-accelerated terminal](https://github.com/alacritty/alacritty)
 - [Tmux - terminal multiplexor](https://github.com/tmux/tmux)
