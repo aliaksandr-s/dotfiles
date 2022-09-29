@@ -22,7 +22,8 @@
 - [Gogh - Themes for terminal](http://mayccoll.github.io/Gogh/)
 - [nvim - modern vim](https://neovim.io/)
 - [Vifm - vi file manager](https://vifm.info/)
-- [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug).    
+- [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
+- [Github CLI](https://cli.github.com/) 
 
 
 ## Tweaks
