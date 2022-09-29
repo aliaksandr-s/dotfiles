@@ -1,10 +1,14 @@
 # Dotfiles
 
+## Essentials
+- [Brew - package manager](https://brew.sh/)
+- [Fish shell](https://fishshell.com/)
+- [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
+
 ## Mac essentials
 - [Karabiner elements - keyboard remapping](https://karabiner-elements.pqrs.org/)
 
 ## Extras
-- [Brew - package manager](https://brew.sh/)
 - [Fuzzy finder](https://github.com/junegunn/fzf)
 - [Rigrep - search](https://github.com/BurntSushi/ripgrep)
 - [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
@@ -19,9 +23,7 @@
 - [nvim - modern vim](https://neovim.io/)
 - [Vifm - vi file manager](https://vifm.info/)
 - [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug).    
------
-- [Fish shell](https://fishshell.com/)
-- [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
+
 
 ## Tweaks
 - [Swap ctrl and alt on linux](https://askubuntu.com/questions/885045/how-to-swap-ctrl-and-alt-keys-in-ubuntu-16-04)
