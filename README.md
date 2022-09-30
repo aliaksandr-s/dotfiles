@@ -8,6 +8,7 @@
 | [Bass](https://github.com/edc/bass)
 | [Starship prompt](https://github.com/starship/starship)
 - [Node version manager](https://github.com/nvm-sh/nvm)
+- [Github CLI](https://cli.github.com/)
 
 
 ## Mac essentials
@@ -27,7 +28,7 @@
 - [nvim - modern vim](https://neovim.io/)
 - [Vifm - vi file manager](https://vifm.info/)
 - [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
-- [Github CLI](https://cli.github.com/) 
+ 
 
 
 ## Tweaks
