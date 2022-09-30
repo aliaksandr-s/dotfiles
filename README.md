@@ -18,7 +18,6 @@
 - [Fuzzy finder](https://github.com/junegunn/fzf)
 - [Rigrep - search](https://github.com/BurntSushi/ripgrep)
 - [Lazygit - terminal gui for git](https://github.com/jesseduffield/lazygit)
-- [Fira Code - font](https://github.com/tonsky/FiraCode/wiki)
 - [Konsole - terminal](https://konsole.kde.org/)
 - [Alacritty - GPU-accelerated terminal](https://github.com/alacritty/alacritty)
 - [Tmux - terminal multiplexor](https://github.com/tmux/tmux)
