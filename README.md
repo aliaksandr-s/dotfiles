@@ -5,6 +5,7 @@
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) | [install script](https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e)
 - [Fish shell](https://fishshell.com/)
 | [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
+| [Bass](https://github.com/edc/bass)
 | [Starship prompt](https://github.com/starship/starship)
 
 
