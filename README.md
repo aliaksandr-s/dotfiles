@@ -7,6 +7,7 @@
 | [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
 | [Bass](https://github.com/edc/bass)
 | [Starship prompt](https://github.com/starship/starship)
+- [Node version manager](https://github.com/nvm-sh/nvm)
 
 
 ## Mac essentials
