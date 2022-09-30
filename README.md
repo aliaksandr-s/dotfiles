@@ -9,6 +9,7 @@
 | [Starship prompt](https://github.com/starship/starship)
 - [Node version manager](https://github.com/nvm-sh/nvm)
 - [Github CLI](https://cli.github.com/)
+- [nvim - modern vim](https://neovim.io/)
 
 
 ## Mac essentials
@@ -24,7 +25,6 @@
 - [Spaceship - terminal extension](https://github.com/denysdovhan/spaceship-prompt)
 - [Bat - syntax highligting](https://github.com/sharkdp/bat)
 - [Gogh - Themes for terminal](http://mayccoll.github.io/Gogh/)
-- [nvim - modern vim](https://neovim.io/)
 - [Vifm - vi file manager](https://vifm.info/)
 - [Vim-Plug - Vim plugin manager](https://github.com/junegunn/vim-plug)
  
