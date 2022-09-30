@@ -4,8 +4,8 @@
 - [Brew - package manager](https://brew.sh/)
 - [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) | [install script](https://gist.github.com/davidteren/898f2dcccd42d9f8680ec69a3a5d350e)
 - [Fish shell](https://fishshell.com/)
-- [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
-- [Starship prompt](https://github.com/starship/starship)
+| [Oh my fish](https://github.com/oh-my-fish/oh-my-fish#startup)
+| [Starship prompt](https://github.com/starship/starship)
 
 
 ## Mac essentials
