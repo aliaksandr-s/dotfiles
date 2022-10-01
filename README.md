@@ -10,6 +10,7 @@
 - [Node version manager](https://github.com/nvm-sh/nvm)
 - [Github CLI](https://cli.github.com/)
 - [Kitty terminal](https://sw.kovidgoyal.net/kitty/)
+| [themes](https://github.com/dexpota/kitty-themes)
 - [Neovim](https://neovim.io/)
 
 
